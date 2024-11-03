@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRISTIAN GALINDO DEVELOPER</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: black;
+            /* Fondo negro para toda la página */
+            font-family: cursive;
+            /* Usa la fuente 'cursive' para todo el texto */
+            overflow-y: auto;
+            /* Permite el desplazamiento vertical si el contenido es mayor que la pantalla */
+        }
+
+        header {
+            text-align: center;
+            /* Centra el contenido del encabezado */
+            padding: 20px;
+            /* Agrega un espacio interior de 20px alrededor del contenido */
+            margin-bottom: 20px;
+            /* Añade un margen inferior de 20px para separar el encabezado de otros elementos */
+            position: relative;
+            /* Define la posición del encabezado para poder manipularlo con 'z-index' */
+            z-index: 2;
+            /* Asegura que el encabezado esté por encima de otros elementos en caso de solapamiento */
+        }
+
+        header h1 {
+            color: purple;
+            /* Color púrpura oscuro para el texto del encabezado */
+            font-size: 2em;
+            /* Tamaño de fuente más grande para el título principal */
+            margin: 0;
+            /* Elimina el margen predeterminado alrededor del h1 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            /* Añade una sombra al texto con un efecto sutil de 2px de desplazamiento */
+        }
+
+        nav {
+            margin-top: 10px;
+            /* Agrega un margen superior de 10px para separar la barra de navegación del encabezado */
+        }
+
+        nav ul {
+            list-style: none;
+            /* Elimina los marcadores de lista de los elementos de navegación */
+            padding: 0;
+            /* Elimina el padding de la lista */
+            display: flex;
+            /* Aplica un layout flexbox para alinear los elementos de la lista horizontalmente */
+            justify-content: center;
+            /* Centra los elementos dentro del contenedor */
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            /* Añade márgenes laterales de 15px para separar los enlaces de navegación */
+        }
+
+        nav ul li a {
+            color: purple;
+            /* Define el color púrpura para los enlaces */
+            text-decoration: none;
+            /* Elimina el subrayado predeterminado de los enlaces */
+            transition: color 0.3s;
+            /* Añade una transición suave de 0.3s para cambios en el color al hacer hover */
+        }
+
+        nav ul li a:hover {
+            color: #00ff00;
+            /* Cambia el color de los enlaces a verde fluorescente cuando se pasa el ratón por encima */
+        }
+
+        #section1 {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            transform-origin: 50% 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: purple;
+            margin-bottom: 120px;
+            /* Aumentar el margen inferior para separar de la sección 2 */
+        }
+
+        #section1 #titles {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            margin: 20px auto;
+            transform: perspective(500px) rotateX(20deg);
+            min-height: 150px;
+            /* Espacio mínimo fijo para evitar superposiciones */
+        }
+
+        #section1 #titlecontent {
+            position: relative;
+            font-size: 2em;
+            z-index: 2;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                top: 100%;
+            }
+
+            100% {
+                top: -200%;
+            }
+        }
+
+        #section1 .media {
+            position: absolute;
+            right: 28%;
+            bottom: 0;
+            width: 150px;
+            height: auto;
+            z-index: 1;
+            margin-top: -20px;
+        }
+
+        #section1 .media img {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+            border: none;
+            transform: none;
+        }
+
+        #section1 .media::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(128, 0, 128, 0.466), transparent);
+            transform: translate(-30%, -40%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #section1 .media:hover::before {
+            opacity: 1;
+        }
+
+        #section1 .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: purple;
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 2;
+        }
+
+        #section1 .play-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(8, 5, 8, 0.6), transparent);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        #section1 .play-btn:hover::before {
+            opacity: 1;
+        }
+
+        #section1 .media:hover .play-btn {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Section 2 */
+        #section2 {
+            margin-top: 300px;
+            /* Aumentar el margen superior para separar de la sección 1 */
+        }
+
+        #section2 div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #ff007f;
+            text-align: center;
+            height: 100vh;
+            margin: 20px;
+        }
+
+        #section2 .h2 {
+            max-width: 500px;
+            margin: 20px auto 10px;
+            text-align: left;
+            z-index: 2;
+        }
+
+        .spam-letter {
+            margin: 20px;
+            /* Añade margen de 20px alrededor del elemento */
+            padding: 10px;
+            /* Añade padding interno si es necesario */
+            background-color: #f8d7da;
+            /* Puedes añadir un fondo para diferenciarlo */
+            border: 1px solid #f5c6cb;
+            /* Un borde opcional */
+            border-radius: 5px;
+            /* Bordes redondeados opcionales */
+        }
+
+       /* Contenedor de video */
+#section2 .media {
+    display: flex;
+    justify-content: space-evenly; /* Distribuye los videos uniformemente */
+    margin-top: auto;
+    z-index: 1;
+    flex-wrap: wrap; /* Permite que los videos se envuelvan si no hay suficiente espacio */
+}
+
+/* Estilos para videos */
+#section2 .media iframe {
+    border-radius: 15px; /* Bordes redondeados para los videos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves para el hover */
+    width: 80%; /* Mantener el tamaño máximo a 80% del contenedor */
+    height: auto; /* Mantener la proporción del video */
+    max-height: 315px; /* Ajustar la altura máxima de los videos */
+    margin: 10px; /* Espacio entre los videos */
+}
+
+/* Efectos de hover para videos */
+#section2 .media iframe:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); /* Sombra al pasar el ratón */
+    transform: scale(1.05); /* Agranda ligeramente el video al pasar el ratón */
+}
+
+
+
+        /* Estilos para el botón */
+        #section2 .play-game-btn {
+            display: none;
+            /* Mantiene el botón oculto por defecto */
+            padding: 5px 10px;
+            background-color: #ff007f;
+            color: blue;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            /* Cambiar a 'relative' para que esté contenido en la sección */
+            z-index: 2;
+            opacity: 0;
+            /* Comienza oculto */
+            transition: opacity 0.5s ease;
+            /* Suaviza la transición */
+            margin-top: 50px;
+            border: 2px solid blue;
+            /* Añadir margen superior al botón */
+        }
+
+        /* Agregar una clase para mostrar el botón */
+        #section2 .play-game-btn.visible {
+            display: block;
+            /* Cambia a 'block' para hacerlo visible */
+            opacity: 1;
+            /* Hacerlo visible */
+        }
+
+
+
+
+
+
+        #section3 {
+            padding: 20px;
+            background-color: black;
+            color: blue;
+            margin-top: 300px;
+        }
+
+        #section3 h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        /* Contenedor de la cuadrícula de imágenes */
+        #section3 .gridywrap {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            /* Cuatro columnas con 80px cada una */
+            grid-gap: 20px;
+            /* Espacio entre las imágenes */
+            margin-bottom: 30px;
+            max-width: fit-content;
+            /* Cambiado a max-width para mayor compatibilidad */
+            margin-left: auto;
+            /* Centrar el contenedor */
+            margin-right: auto;
+            /* Centrar el contenedor */
+        }
+
+        /* Estilos para cada item de la cuadrícula de imágenes */
+        #section3 .gridy-1,
+        #section3 .gridy-2 {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Estilo para las imágenes dentro de cada elemento */
+        #section3 .gridimg {
+            height: 100px;
+            /* Altura específica para las imágenes */
+            width: 100px;
+            /* Ancho específico para las imágenes */
+            background-size: cover;
+            /* Mantiene la proporción de la imagen */
+            background-position: center;
+            /* Centra la imagen */
+            transition: all 0.3s ease;
+            /* Suaviza la transición */
+        }
+
+        /* Efecto de iluminación y cursor en el hover para imágenes */
+        #section3 .gridimg:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            /* Efecto de sombra azul */
+            transform: scale(1.05);
+            /* Efecto de zoom en hover */
+            cursor: url('c:/Users/User/Downloads/objetivo (1).png'), auto;
+            /* Cursor personalizado */
+            border: 2px solid blue;
+            /* Agregar borde azul en hover */
+        }
+
+        /* Contenedor de videos */
+        #section3 .video-container {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            /* Cuatro columnas de 80px */
+            grid-gap: 20px;
+            /* Espacio entre los videos */
+            margin-top: 30px;
+            max-width: fit-content;
+            /* Cambiado a max-width para mayor compatibilidad */
+            margin-left: auto;
+            /* Centrar el contenedor */
+            margin-right: auto;
+            /* Centrar el contenedor */
+        }
+
+        /* Estilo para los videos */
+        #section3 .video-container video {
+            height: 95px;
+            /* Altura específica para los videos */
+            width: 95px;
+            /* Ancho específico para los videos */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            /* Suaviza la transición */
+        }
+
+        /* Efecto de iluminación en los videos */
+        #section3 .video-container video:hover {
+            transform: scale(1.05);
+            /* Añade un ligero efecto de zoom en hover */
+            border: 2px solid blue;
+            /* Agregar borde azul en hover */
+            cursor: url('c:/Users/User/Downloads/objetivo (1).png'), auto;
+            /* Cursor personalizado */
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            /* Efecto de sombra rosa */
+        }
+
+        /* Responsividad */
+        @media (max-width: 1024px) {
+            #section3 .gridywrap {
+                grid-template-columns: repeat(2, 80px);
+                /* Dos columnas en pantallas más pequeñas */
+            }
+
+            #section3 .video-container {
+                grid-template-columns: repeat(2, 80px);
+                /* Dos columnas para videos */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #section3 .gridywrap {
+                grid-template-columns: repeat(1, 80px);
+                /* Una columna en pantallas más pequeñas */
+            }
+
+            #section3 .video-container {
+                grid-template-columns: repeat(1, 80px);
+                /* Una columna para videos */
+            }
+        }
+
+
+        /* Section 4 */
+        #section4 {
+            display: flex;
+            justify-content: center;
+            /* Centra horizontalmente */
+            align-items: center;
+            /* Centra verticalmente */
+            flex-direction: column;
+            /* Coloca los elementos en columnas */
+            min-height: 100vh;
+            /* Asegura que ocupe al menos el 100% de la altura de la ventana */
+            text-align: center;
+            /* Alinea el texto al centro */
+            padding: 5px;
+            box-sizing: border-box;
+            /* Incluye padding en el tamaño total */
+            color: #07f51a;
+            /* Establecer el color de la fuente en amarillo */
+
+        }
+
+        #section4 h2 {
+            max-width: 500px;
+            /* Limita el ancho del encabezado */
+            margin: 20px auto;
+            /* Centra el encabezado horizontalmente con un margen superior e inferior */
+            text-align: left;
+            /* Alinea el texto a la izquierda */
+            z-index: 2;
+            /* Asegura que el encabezado esté por encima de otros elementos */
+            color: #07f51a;
+            /* Color del texto */
+            font-size: 1.5 em;
+            /* Aumenta el tamaño de la fuente para mayor visibilidad */
+            font-weight: bold;
+            /* Hace que el texto sea más destacado */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            /* Añade una sombra sutil para mejorar la legibilidad */
+            padding: 10px;
+            /* Espaciado interno para evitar que el texto toque los bordes */
+        }
+
+        /* Estilo para los íconos de progreso */
+        #section4 .progress-icon {
+            display: flex;
+            /* Asegura que los íconos y la barra de progreso se alineen */
+            align-items: center;
+            /* Centra verticalmente los íconos */
+        }
+
+        #section4 .progress-icon img {
+            width: 50px;
+            /* Establecer un tamaño fijo para todos los íconos */
+            height: 50px;
+            /* Mantener proporciones uniformes */
+            transition: transform 0.5s;
+            /* Transición suave para el escalado */
+        }
+
+        /* Contenedor de la barra de progreso */
+        #section4 .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* Alinea al inicio */
+            width: 100%;
+            max-width: 600px;
+            background-color: #000000;
+            border-radius: 10px;
+
+            height: 50px;
+            /* Corregido: rgba debe ser usado para la sombra */
+            position: relative;
+            /* Para permitir posicionamiento absoluto del porcentaje */
+        }
+
+        /* Barra de progreso */
+        #section4 .progress {
+            width: 0;
+            /* Comienza en 0 */
+            height: 30%;
+            background-color: #07f51a;
+            transition: width 0.8s;
+            box-shadow: 0 0 10px 5px rgba(7, 245, 26, 0.5);
+            /* Transición de la barra de progreso */
+        }
+
+        /* Efecto al pasar el mouse sobre el contenedor */
+        #section4 .progress-container:hover .progress {
+            width: 80%;
+            /* Extiende la barra al 80% en hover */
+            opacity: 1;
+        }
+
+        /* Efecto hover sobre los íconos */
+        #section4 .progress-container:hover .progress-icon img {
+            transform: scale(1.5);
+            /* Aumentar el tamaño del icono al hacer hover */
+            box-shadow: 0 0 15px 5px #07f51a;
+            /* Añadir sombra blanca al icono en hover */
+            z-index: 2;
+        }
+
+        /* Asegurar que el texto del porcentaje esté centrado dentro de la barra de progreso */
+        .percentage {
+            position: absolute;
+            /* Posiciona el porcentaje de forma absoluta */
+            right: 10px;
+            /* Ajusta la posición según sea necesario */
+            color: #07f51a;
+            /* Color del texto */
+            font-weight: bold;
+            /* Resaltar el texto */
+            opacity: 0;
+            /* Comienza oculto */
+            transition: opacity 0.5s ease;
+            /* Transición suave para la opacidad */
+        }
+
+        /* Hacer visible el porcentaje en hover */
+        #section4 .progress-container:hover .percentage {
+            opacity: 1;
+            /* Hacer visible el porcentaje al hacer hover */
+        }
+
+        #section4 #movingButton {
+            position: absolute;
+            padding: 10px 20px;
+            background-color: #07f51a;
+            ;
+            color: rgb(7, 7, 7);
+            border: 2px solid rgb(248, 7, 168);
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #movingButton:hover {
+            background-color: #07f51a;
+            ;
+        }
+
+
+        #section6 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            /* Espacio alrededor de la sección */
+            overflow: hidden;
+            /* Asegura que los elementos no salgan de la sección */
+        }
+
+        #section6 div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            /* Reducido para mayor espacio entre elementos */
+            text-align: center;
+            margin: 10px;
+            /* Ajustado margen para mejorar la disposición */
+            box-sizing: border-box;
+            /* Incluye padding en el tamaño total */
+        }
+
+        #section6 h2 {
+            max-width: 500px;
+            /* Limita el ancho del encabezado */
+            margin: 20px auto;
+            /* Centra el encabezado horizontalmente con un margen superior e inferior */
+            text-align: left;
+            /* Alinea el texto a la izquierda */
+            z-index: 2;
+            /* Asegura que el encabezado esté por encima de otros elementos */
+            color: #e1bee7;
+            /* Color del texto */
+            font-size: 2em;
+            /* Tamaño de la fuente para mayor visibilidad */
+            font-weight: bold;
+            /* Hace que el texto sea más destacado */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            /* Sombra sutil para mejorar la legibilidad */
+            padding: 10px;
+            /* Espaciado interno para evitar que el texto toque los bordes */
+        }
+
+        #section6 p {
+            max-width: 800px;
+            /* Limita el ancho del encabezado */
+            margin: 20px auto;
+            /* Centra el encabezado horizontalmente con un margen superior e inferior */
+            text-align: left;
+            /* Alinea el texto a la izquierda */
+            z-index: 2;
+            /* Asegura que el encabezado esté por encima de otros elementos */
+            color: #e1bee7;
+            /* Color del texto */
+            font-size: 1em;
+            /* Tamaño de la fuente para mayor visibilidad */
+            font-weight: bold;
+            /* Hace que el texto sea más destacado */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            /* Sombra sutil para mejorar la legibilidad */
+            padding: 10px;
+            /* Espaciado interno para evitar que el texto toque los bordes */
+        }
+
+        .gallery {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #00000000;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            animation: animate 20s linear infinite;
+        }
+
+        .box span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+            box-shadow: 0 0 20px #e1bee7;
+            /* Sombra luminosa */
+            transition: transform 0.5s, box-shadow 0.5s;
+            /* Transición suave */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre la imagen */
+        }
+
+        .box span img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.5s;
+            /* Transición suave para la imagen */
+        }
+
+        @keyframes animate {
+            0% {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+
+            100% {
+                transform: perspective(1000px) rotateY(360deg);
+            }
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 0 30px #e1bee7;
+            /* Sombra más intensa al pasar el mouse */
+        }
+
+        .selected {
+            transform: scale(1.5);
+            /* Aumenta el tamaño de la imagen seleccionada */
+            z-index: 10;
+            /* Asegura que esté por encima de las otras imágenes */
+            box-shadow: 0 0 40px #e1bee7;
+            /* Sombra intensa al seleccionar */
+        }
+
+        /* Estilo para el iframe */
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            /* Centra el iframe */
+            margin-top: 20px;
+            /* Espacio encima del iframe */
+        }
+
+        .iframe-container iframe {
+            width: 400px;
+            /* Ancho ajustado del iframe */
+            height: 280px;
+            /* Altura ajustada para mantener la proporción 16:9 */
+            border: 5px solid #e1bee7;
+            /* Sin borde */
+            border-radius: 8px;
+            /* Esquinas redondeadas */
+            box-shadow: 0 2px 8px rgba(63, 69, 81, 0.16);
+            /* Sombra sutil */
+        }
+
+        #section7 div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            margin: 20px;
+            /* Margen agregado */
+            box-sizing: border-box;
+            /* Incluye padding en el tamaño total */
+        }
+
+        #section7 .media img {
+
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            max-width: 50%;
+            /* Limitar el tamaño máximo */
+        }
+
+        #section7 .media img:hover {
+            filter: drop-shadow(0 0 30px rgba(0, 255, 204, 1)), 0 0 50px rgba(0, 255, 204, 0.5);
+        }
+
+        #section7 .title {
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        #section7 .description {
+            font-size: 18px;
+        }
+
+        /* Formulario de contacto */
+        form {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #00FFCC;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #00FFCC;
+        }
+
+        form button {
+
+            /* Mantiene el botón oculto por defecto */
+            padding: 5px 10px;
+            background-color: #00FFCC;
+            color: #0d0e0d;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            /* Cambiar a 'relative' para que esté contenido en la sección */
+
+            z-index: 2;
+
+            /* Suaviza la transición */
+            margin-top: 50px;
+            border: 2px solid rgb(7, 7, 7);
+            /* Añadir margen superior al botón */
+        }
+
+        form button:hover {
+            background-color: #009999;
+        }
+
+        /* Código QR */
+        .qr-code img {
+            border: 5px solid #00FFCC;
+            /* Mantener el borde del código QR */
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .contact-flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        .image-container {
+            position: relative;
+            /* Permite posicionar el botón dentro de este contenedor */
+        }
+
+        #hoverButton {
+            display: none;
+            /* Mantiene el botón oculto por defecto */
+            padding: 5px 10px;
+            background-color: #00FFCC;
+            color: #0d0e0d;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            /* Cambiar a 'relative' para que esté contenido en la sección */
+
+            z-index: 2;
+            opacity: 0;
+            /* Comienza oculto */
+            transition: opacity 0.5s ease;
+            /* Suaviza la transición */
+            margin-top: 50px;
+            border: 2px solid rgb(7, 7, 7);
+            /* Añadir margen superior al botón */
+        }
+
+        .image-container:hover #hoverButton {
+            display: block;
+            /* Muestra el botón al hacer hover sobre la imagen */
+            opacity: 1;
+            /* Asegura que el botón sea visible */
+        }
+
+        /* Asegúrate de que el botón se mantenga oculto al principio */
+        .hidden {
+            display: none;
+            /* Oculta el botón inicialmente */
+        }
+
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000000;
+            color: #00FFCC;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: #00FFCC;
+            text-decoration: none;
+            transition: color 0.3s;
+            /* Transición suave para el efecto hover */
+        }
+
+        .footer-links a:hover {
+            color: #00ff00;
+            /* Cambia a un color diferente al hacer hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CHRISTIAN GALINDO DEVELOPER</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html" target="_blank">Home</a></li>
+                <li><a href="about.html" target="_blank">About</a></li>
+                <li><a href="projects.html" target="_blank">Projects</a></li>
+                <li><a href="skills.html" target="_blank">Skills</a></li>
+                <li><a href="generation.html" target="_blank">Generation</a></li>
+                <li><a href="contact.html" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+        <section id="section1" class="content">
+            <div id="titles">
+                <div id="titlecontent">
+                    <h2>Welcome to my world.</h2>
+                    <p>
+                        I am a dedicated video game developer committed to creating innovative interactive experiences.
+                        I possess the ability to understand and translate clients' needs and ideas into functional and
+                        engaging prototypes. My proactive approach allows me to anticipate concepts and trends,
+                        integrating the latest technologies to enhance both presentation and gameplay. I am dedicated to
+                        maintaining high-quality standards at every stage of development, ensuring that solutions not
+                        only meet expectations but also exceed industry standards.
+                    </p>
+                </div>
+            </div>
+            <div class="media">
+                <img src="c:\Users\User\Downloads\UnityWebDeveloper.png" alt="Unity Web Developer" />
+                <a href="file:///C:/Users/User/Desktop/AnimaPortfolio/ShootBubble/Index.html"
+                    aria-label="Play Animation">
+                    <button class="play-btn">▶</button>
+                </a>
+            </div>
+        </section>
+
+        <section id="section2" class="content">
+            <div id="titles">
+                <h2 id="fallingText">2D / 3D / AR / VR.</h2>
+
+                <p id="textContent">
+                    As a dedicated video game programmer, I combine creativity with strong technical skills to bring
+                    immersive experiences to life. I excel in programming languages and game engines like Unity,
+                    optimizing performance and seamlessly integrating complex mechanics. I thrive under tight deadlines,
+                    collaborating effectively with multidisciplinary teams to turn ideas into engaging, polished games.
+                    My focus is on delivering high-quality solutions, constantly refining and iterating to ensure the
+                    final product not only meets industry standards but exceeds player expectations with its captivating
+                    execution.
+                </p>
+
+
+                <a href="file:///C:/Users/User/Desktop/AnimaPortfolio/Tetris/index.html" class="play-game-btn"
+                    id="playGameBtn"
+                    style="opacity: 0; transition: opacity 0.5s ease; display: inline-block; text-decoration: none; padding: 10px 15px; background-color: rgb(248, 7, 168); color: #070707; border-radius: 5px; box-shadow: 0 0 5px #800080, 0 0 10px #800080, 0 0 15px #800080;">
+                    Play Game
+                </a>
+
+
+                <div class="media">
+                    <!-- Video 1 -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dFsB3Sx-gq8" title="Video 1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                
+                    <!-- Video 2 -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/1UVfq1T-rK4" title="Video 2"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                
+                    <!-- Video 3 -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/sSfL1fVc8z4" title="Video 3"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                
+
+
+                <script>
+                    function rainEffect() {
+                        const title = document.getElementById('fallingText');
+                        const paragraph = document.getElementById('textContent');
+                        const elements = [title, paragraph];
+
+                        elements.forEach((element) => {
+                            const content = element.textContent.trim(); // Obtener el contenido sin modificar el layout
+                            const spans = []; // Arreglo para almacenar los spans
+
+                            // Crear un span para cada letra, sin eliminar el contenido de inmediato
+                            for (let char of content) {
+                                const span = document.createElement('span');
+                                span.className = 'letter hidden'; // Oculto inicialmente
+                                span.textContent = char === ' ' ? '\u00A0' : char; // Mantener los espacios como &nbsp;
+                                spans.push(span); // Agregar el span al arreglo
+                            }
+
+                            // Reemplazar el contenido con los spans
+                            element.innerHTML = ''; // Limpiar el contenido original
+                            spans.forEach(span => element.appendChild(span)); // Añadir todos los spans de una vez
+                        });
+
+                        const letters = document.querySelectorAll('.letter');
+                        letters.forEach((letter, index) => {
+                            const delay = index * 50;
+
+                            // Mostrar las letras justo antes de la animación para evitar el salto
+                            setTimeout(() => {
+                                letter.classList.remove('hidden'); // Mostrar la letra
+                                letter.style.position = 'relative';
+                                letter.style.top = '0'; // Asegurar que comience desde su posición original
+                                letter.style.opacity = '1';
+                            }, delay + 2500); // Aparecen justo antes de que comience la caída
+
+                            // Animar cada letra después de un retraso calculado
+                            setTimeout(() => {
+                                letter.style.top = '50px'; // Caída de la letra
+                                letter.style.opacity = '0'; // Desvanecimiento
+                            }, delay + 3000); // Comienza la caída a los 3 segundos
+
+                            // Hacer que las letras vuelvan a aparecer después de 3 segundos de la caída
+                            setTimeout(() => {
+                                letter.style.top = '0'; // Regresa a su posición original
+                                letter.style.opacity = '1'; // Restaura la opacidad
+                                letter.style.transition = 'top 0.5s ease, opacity 0.5s ease'; // Añadir una transición suave
+                            }, delay + 30000); // Reaparecer 3 segundos después de la caída
+                        });
+
+                        // Mostrar el botón 3 segundos después de que comience la animación
+                        setTimeout(() => {
+                            const playGameBtn = document.getElementById('playGameBtn');
+                            if (playGameBtn) {  // Asegúrate de que el botón existe
+                                playGameBtn.style.opacity = '1'; // Hacer visible el botón
+                                playGameBtn.style.display = 'block'; // Asegurar que el botón sea visible
+                                playGameBtn.style.transition = 'opacity 0.5s ease'; // Suavizar la transición
+                            } else {
+                                console.error("El botón no fue encontrado en el DOM.");
+                            }
+                        }, 6000); // Mostrar el botón a los 6 segundos
+                    }
+
+                    // Iniciar la animación después de 5 segundos
+                    setTimeout(rainEffect, 5000);
+                </script>
+
+                <style>
+                    .letter.hidden {
+                        visibility: hidden;
+                    }
+                </style>
+
+
+
+
+        </section>
+
+
+
+        <section id="section3" class="content">
+            <h2>Welcome to My Portfolio!</h2>
+
+            <div class="gridywrap">
+                <!-- Imagen 1 -->
+                <div class="gridy-2 gridyhe-1">
+                    <div class="gridimg hover-sound" style="background-image: url('c:/Users/User/Desktop/fruit.JPG')">
+                        &nbsp;
+                    </div>
+                    <div class="gridinfo">
+                        <h3> FRUIT PLATFORM 2D </h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th AUG 2024</p>
+                        </div>
+                        <p class="gridexerpt"> Planing, GamePlay, mechanics, design, Animated, UI/UX </p>
+                    </div>
+                </div>
+
+                <div class="gridy-1 gridyhe-1">
+                    <div class="gridimg hover-sound"
+                        style="background-image: url('c:/Users/User/Desktop/Deckardimg.JPG')">&nbsp;
+                    </div>
+                    <div class="gridinfo">
+                        <h3> DECKARD PLATFORM2D</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th SEP 2024</p>
+                        </div>
+                        <p class="gridexerpt"> Planing, GamePlay, mechanics, design, Animated, UI/UX </p>
+                    </div>
+                </div>
+
+                <!-- Imagen 3 -->
+                <div class="gridy-1 gridyhe-2">
+                    <div class="gridimg hover-sound" style="background-image: url('c:/Users/User/Desktop/1.PNG')">&nbsp;
+                    </div>
+                    <div class="gridinfo">
+                        <h3>SAMURAI MOON</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th MAY 2024</p>
+                        </div>
+                        <p class="gridexerpt">Planing, GamePlay, mechanics, design, Animated, UI/UX</p>
+                    </div>
+                </div>
+
+                <!-- Imagen 4 -->
+                <div class="gridy-1 gridyhe-1">
+                    <div class="gridimg hover-sound"
+                        style="background-image: url('c:/Users/User/Desktop/EvolutionCell.PNG')"></div>
+                    <div class="gridinfo">
+                        <h3>EVOLUTION CELL 2D</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th MAY 2024</p>
+                        </div>
+                        <p class="gridexerpt">Planing, GamePlay, mechanics, design, Animated, UI/UX</p>
+                    </div>
+                </div>
+
+                <!-- Imagen 5 -->
+                <div class="gridy-1 gridyhe-2">
+                    <div class="gridimg hover-sound" style="background-image: url('c:/Users/User/Desktop/Bartolo.png')">
+                        &nbsp;</div>
+                    <div class="gridinfo">
+                        <h3>Bartolitos runner 3D</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th APR 2024</p>
+                        </div>
+                        <p class="gridexerpt">Planing, GamePlay, mechanics, design, Animated, UI/UX</p>
+                    </div>
+                </div>
+
+                <!-- Imagen 6 -->
+                <div class="gridy-1 gridyhe-1">
+                    <div class="gridimg hover-sound" style="background-image: url('c:/Users/User/Desktop/Es2.png')">
+                        &nbsp;</div>
+                    <div class="gridinfo">
+                        <h3>Eagle Survive</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th MAR 2024</p>
+                        </div>
+                        <p class="gridexerpt"> Planing, GamePlay, mechanics, design, Animated, UI/UX </p>
+                    </div>
+                </div>
+
+                <!-- Imagen 7 -->
+                <div class="gridy-1 gridyhe-1">
+                    <div class="gridimg hover-sound" style="background-image: url('c:/Users/User/Desktop/3.PNG')">&nbsp;
+                    </div>
+                    <div class="gridinfo">
+                        <h3>Match 3D Platzi</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th NOV 2024</p>
+                        </div>
+                        <p class="gridexerpt">Planing, GamePlay, mechanics, design, Animated, UI/UX</p>
+                    </div>
+                </div>
+
+                <!-- Imagen 8 -->
+                <div class="gridy-2 gridyhe-1">
+                    <div class="gridimg hover-sound"
+                        style="background-image: url('c:/Users/User/Desktop/descarga.png')">&nbsp;</div>
+                    <div class="gridinfo">
+                        <h3>Proyecto SENA</h3>
+                        <div class="gridmeta">
+                            <p class="gridwhen"><i class="fa fa-clock-o"></i> 17:22 17th NOV 2024</p>
+                        </div>
+                        <p class="gridexerpt"> Planing, GamePlay, mechanics, design, Animated, UI/UX </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-container">
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Videos\2024-11-02\12-53-16.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\BartoloRunners ‐ Hecho con Clipchamp.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\EvolutionCell ‐ Hecho con Clipchamp.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Videos\2024-10-13\Exercise3.5Unity.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\CreativeUnity6.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\CreativeUnity5.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\CreativeUnity4.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <video controls class="hover-sound">
+                    <source src="c:\Users\User\Downloads\CreativeExerciseUnity4.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+            </div>
+            </div>
+
+            <audio id="hoverSound" src="c:/Users/User/Desktop/Portfolio/snd_reload_clip.ogg" preload="auto"></audio>
+            <audio id="selectSound" src="c:/Users/User/Desktop/Portfolio/snd_small_rifle.ogg" preload="auto"></audio>
+
+            <script>
+                // JavaScript para los sonidos
+                const hoverSound = document.getElementById('hoverSound');
+                const selectSound = document.getElementById('selectSound');
+
+                document.querySelectorAll('.hover-sound').forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        hoverSound.currentTime = 0;
+                        hoverSound.play();
+                    });
+
+                    item.addEventListener('click', () => {
+                        selectSound.currentTime = 0;
+                        selectSound.play();
+                    });
+                });
+            </script>
+        </section>
+
+        <section id="section4" class="content">
+            <h2>SKILLS</h2>
+
+            <h2>C# Programming</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/mimetypes_Csharp_423.png" alt="C# Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">80%</div>
+            </div>
+
+            <h2>Model Design 2D/3D</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/blender_102995.png" alt="Blender Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">70%</div>
+            </div>
+
+            <h2>Animation</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/Animation_icon-icons.com_54214.png" alt="Animation Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">70%</div>
+            </div>
+
+            <h2>Game Testing</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/testing_icon-icons.com_72182.png" alt="Testing Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">80%</div>
+            </div>
+
+            <h2>UI/UX Design</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/book-bookmark-icon_34486.png" alt="UI/UX Design Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">80%</div>
+            </div>
+
+            <h2>Music</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/Music_29918.png" alt="Music Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">70%</div>
+            </div>
+
+            <h2>Leadership</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/artboard_123061.png" alt="Leadership Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">90%</div>
+            </div>
+
+            <h2>Storytelling</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/book-bookmark-icon_34486.png" alt="Storytelling Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">90%</div>
+            </div>
+
+            <h2>Finance</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/1486564172-finance-loan-money_81492.png" alt="Finance Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">60%</div>
+            </div>
+
+            <h2>Marketing</h2>
+            <div class="progress-container">
+                <div class="progress-icon">
+                    <img src="c:/Users/User/Downloads/Article-Marketing_icon-icons.com_53705.png" alt="Marketing Icon">
+                </div>
+                <div class="progress"></div>
+                <div class="percentage">80%</div>
+            </div>
+
+            <audio id="hoverSound2" src="c:/Users/User/Downloads/lightsaber3-87667.mp3" preload="auto"></audio>
+            <audio id="selectSound" src="c:/Users/User/Downloads/lightsaber3-87667.mp3" preload="auto"></audio>
+
+            <button id="movingButton"
+                style="position: absolute; padding: 10px; background-color: blue; color: rgb(219, 9, 114); border: rgb(219, 9, 114); border-radius: 5px;">
+                PLAY GAME </button>
+
+            <script>
+                // JavaScript para los sonidos
+                const hoverSound2 = document.getElementById('hoverSound2');
+
+
+                // Reproducción del sonido al hacer hover en cada barra de progreso
+                document.querySelectorAll('.progress-container').forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        hoverSound2.currentTime = 0; // Reinicia el sonido
+                        hoverSound2.play(); // Reproduce el sonido
+                    });
+
+                    item.addEventListener('click', () => {
+                        selectSound.currentTime = 0; // Reinicia el sonido de selección
+                        selectSound.play(); // Reproduce el sonido de selección
+                    });
+                });
+
+                // Función para mover el botón aleatoriamente
+                function moveButton() {
+                    const button = document.getElementById('movingButton');
+                    const section = document.getElementById('section4');
+                    const sectionWidth = section.clientWidth;
+                    const sectionHeight = section.clientHeight;
+
+                    const randomX = Math.floor(Math.random() * (sectionWidth - button.clientWidth));
+                    const randomY = Math.floor(Math.random() * (sectionHeight - button.clientHeight));
+
+                    button.style.left = `${randomX}px`;
+                    button.style.top = `${randomY}px`;
+                }
+
+                // Mueve el botón cada segundo
+                setInterval(moveButton, 1000);
+            </script>
+        </section>
+
+
+        <section id="section5" class="content">
+            <h2>Section 5</h2>
+            <p>This is the content for section 5.</p>
+        </section>
+
+
+        <section id="section6" class="content">
+            <div class="description">
+                <h2>Generation</h2>
+                <p>At the Generation bootcamp, I gained a wealth of technical skills that have transformed my daily work
+                    into a passion for creating unique, immersive, and educational experiences with cutting-edge
+                    content. I participated in three game jams, where I collaborated with teammates to design, code, and
+                    integrate three exciting video games. My final project allowed me to explore every aspect of game
+                    development, enhancing not only my technical prowess but also my soft skills, which I've honed
+                    throughout my professional journey. Along the way, I met incredible and inspiring people who fueled
+                    my motivation. Let’s play!</p>
+            </div>
+
+            <div class="gallery">
+                <div class="box">
+                    <span style="--i:1" class="gallery-item"><img src="Images/loGOcANVAS.png" alt="Logo Canvas"></span>
+                    <span style="--i:2" class="gallery-item"><img src="Images/samuraimoon.png"
+                            alt="Samurai Moon"></span>
+                    <span style="--i:3" class="gallery-item"><img src="Images/logogeneration.png"
+                            alt="Logo Generation"></span>
+                    <span style="--i:4" class="gallery-item"><img src="Images/1718630444883.jpg" alt="Image 2"></span>
+                    <span style="--i:5" class="gallery-item"><img src="Images/image (2).png" alt="Image 3"></span>
+                    <span style="--i:6" class="gallery-item"><img
+                            src="Images/Screenshot_2024-06-17-08-19-40-375_com.miui.videoplayer.jpg"
+                            alt="Image 4"></span>
+                    <span style="--i:7" class="gallery-item"><img src="Images/logogamejam3.png" alt="Image 5"></span>
+                    <span style="--i:8" class="gallery-item"><img src="Images/LOGOgamejam2.png" alt="Image 6"></span>
+                    <!-- Add more images as necessary -->
+                </div>
+            </div>
+            <div class="iframe-container">
+                <iframe loading="lazy" src="https://www.canva.com/design/DAGR_Q5BPQs/Hlh-vAcmxWRV4jsZdplDUg/watch?embed"
+                    allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+            </div>
+        </section>
+
+        <script>
+            let animationInterval;
+
+            function toggleImageSelection(event) {
+                const selectedItem = event.currentTarget;
+                const galleryItems = document.querySelectorAll('.box span');
+
+                // Remover la clase de selección de todas las imágenes
+                galleryItems.forEach(item => {
+                    item.classList.remove('selected');
+                });
+
+                // Si la imagen seleccionada ya estaba seleccionada, la deselecciona
+                if (selectedItem.classList.contains('selected')) {
+                    selectedItem.classList.remove('selected');
+                } else {
+                    selectedItem.classList.add('selected'); // Agregar clase de selección a la imagen seleccionada
+                }
+            }
+
+            window.onload = function () {
+                const galleryItems = document.querySelectorAll('.box span');
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', toggleImageSelection);
+                });
+
+                // Iniciar la animación del carrusel
+                const box = document.querySelector('.box');
+                let rotation = 0;
+                setInterval(() => {
+                    rotation += 0.5; // Controla la velocidad de rotación
+                    box.style.transform = `rotateY(${rotation}deg)`; // Aplica la rotación
+                }, 50); // Controla la suavidad de la animación
+            }
+        </script>
+
+        <section id="section7" class="content">
+            <div class="media">
+                <div class="image-container">
+                    <img src="c:\Users\User\Downloads\KhrisUnityDev.png" alt="Khris Unity Dev">
+                    <a href="file:///C:/Users/User/Desktop/AnimaPortfolio/Galaxy/index.html"
+                        style="text-decoration: none;">
+                        <button id="hoverButton" class="hidden">PLAY GAME</button>
+                    </a>
+
+                    <!-- Botón agregado -->
+                </div>
+
+                <!-- Contenedor para el formulario y el código QR -->
+                <div class="contact-container">
+                    <h2></h2> <!-- Título corregido -->
+                    <!-- Formulario de contacto -->
+                    <form action="#" method="POST">
+                        <h3></h3>
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                        <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+
+                    <!-- Código QR -->
+                    <h3></h3>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.tusitio.com&amp;size=150x150"
+                            alt="Código QR">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            const imageContainer = document.querySelector('.image-container');
+            const hoverButton = document.getElementById('hoverButton');
+
+            imageContainer.addEventListener('mouseenter', () => {
+                hoverButton.style.display = 'block';
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                hoverButton.style.display = 'none';
+            });
+        </script>
+    </main>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/in/cristian-jose-galindo-casta%C3%B1eda-unity-developer/"
+                    target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/christiangalindo1118" target="_blank">GitHub</a></li>
+            <li><a href="https://portafoliochristiangalindo.my.canva.site/professional-in-customer-service-translating-their-needs-and-ideas-into-the-final-prototypes-anticipating-the-concepts-and-innovating-in-the-presentation-with-the-latest-technology"
+                    target="_blank">Itch.io</a></li>
+            <li><a href="https://khristhihan.itch.io/" target="_blank">Portfolio</a></li>
+        </ul>
+        <p>© 2024 Christian Galindo.</p>
+    </footer>
+</body>
+
+</html>
